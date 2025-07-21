@@ -56,3 +56,6 @@ dkms.conf
 
 # apple
 *.DS_Store
+
+# Archivos de Vagrant
+.vagrant/
