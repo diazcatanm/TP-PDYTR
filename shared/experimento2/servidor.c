@@ -5,12 +5,23 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <time.h>
+#include <errno.h>
 
+void logmsg(const char *msg) {
+    time_t now = time(NULL);
+    struct tm *t = localtime(&now);
+    char ts[20];
+    strftime(ts, sizeof(ts), "%Y-%m-%d %H:%M:%S", t);
+    printf("[%s] %s\n", ts, msg);
+}
 
-void error(char *msg)
+void error(const char *msg)
 {
-  perror(msg);
-  exit(1);
+    char err_msg[256];
+    snprintf(err_msg, sizeof(err_msg), "ERROR: %s - %s", msg, strerror(errno));
+    logmsg(err_msg);
+    exit(1);
 }
 
 int main(int argc, char *argv[])
@@ -21,13 +32,15 @@ int main(int argc, char *argv[])
 
   if (argc < 3)
   {
-    fprintf(stderr, "ERROR, no port or buffer size provided\n");
+    logmsg("ERROR: uso incorrecto - se esperaba: <port> <buffer size>");
     exit(1);
   }
 
   int buf_size = atoi(argv[2]);
 
-  printf("tamaño de buffer: %d \n", buf_size);
+  char log_line[128];
+  snprintf(log_line, sizeof(log_line), "Tamaño de buffer: %d", buf_size);
+  logmsg(log_line);
 
   char buffer[buf_size];
 
@@ -55,6 +68,7 @@ int main(int argc, char *argv[])
   listen(sockfd, 5);
 
   // SE BLOQUEA A ESPERAR UNA CONEXION
+  logmsg("Esperando conexion");
   clilen = sizeof(cli_addr);
   newsockfd = accept(sockfd,
                      (struct sockaddr *)&cli_addr,
@@ -64,21 +78,28 @@ int main(int argc, char *argv[])
   if (newsockfd < 0)
     error("ERROR on accept");
   bzero(buffer, buf_size);
+  
+  logmsg("Conexion establecida");
 
   // LEE CANT DE BYTES QUE RECIBIRA
+  logmsg("Recibiendo cantidad de bytes del mensaje a leer");
   int cant_bytes;
   n = read(newsockfd, &cant_bytes, sizeof(int));
-  printf("cant bytes: %d\n", cant_bytes);
+  snprintf(log_line, sizeof(log_line), "Cantidad de bytes del mensaje: %d", cant_bytes);
+  logmsg(log_line);
 
   bzero(buffer, buf_size);
 
   // RESPONDE AL CLIENTE
+  logmsg("Confirmando recepcion al proceso cliente");
   n = write(newsockfd, "ok", 2);
   bzero(buffer, buf_size);
 
+  logmsg("Iniciando 5 segundos de delay");
   sleep(5); 
 
   // LEE EL MENSAJE DEL CLIENTE
+  logmsg("Leyendo mensaje en Buffer");
   int j = 0;
   do
   {
@@ -91,5 +112,6 @@ int main(int argc, char *argv[])
     j += n;
   } while (j < cant_bytes);
 
+  logmsg("Fin de la recepcion");
   return 0;
 }
