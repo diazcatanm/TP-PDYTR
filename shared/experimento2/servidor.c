@@ -26,8 +26,11 @@ void error(const char *msg)
 
 int main(int argc, char *argv[])
 {
-  int sockfd, newsockfd, portno, clilen;
+  //int sockfd, newsockfd, portno, clilen;
   struct sockaddr_in serv_addr, cli_addr;
+  int sockfd, newsockfd, portno;
+  socklen_t clilen;
+
   int n;
 
   if (argc < 3)

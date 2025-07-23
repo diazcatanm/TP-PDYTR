@@ -3,10 +3,8 @@ logmsg() {
   echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1"
 }
 
-cd /vagrant_shared/experimento2 || exit 1
+#!cd /vagrant_shared/experimento2 || exit 1
 mkdir -p logs
-
-make
 
 LOG="logs/cliente_$(date +%Y%m%d_%H%M%S).log"
 

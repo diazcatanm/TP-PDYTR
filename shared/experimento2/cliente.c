@@ -75,7 +75,8 @@ int main(int argc, char *argv[])
     serv_addr.sin_port = htons(portno);
 
     // DESCRIPTOR - DIRECCION - TAMAÑO DIRECCION
-    if (connect(sockfd, &serv_addr, sizeof(serv_addr)) < 0)
+    //if (connect(sockfd, &serv_addr, sizeof(serv_addr)) < 0)
+    if (connect(sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)
         error("ERROR connecting");
 
     bzero(buffer, buf_size);
