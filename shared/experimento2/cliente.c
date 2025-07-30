@@ -7,12 +7,23 @@
 #include <netinet/in.h>
 #include <netdb.h>
 #include <math.h>
+#include <time.h>
+#include <errno.h>
 
+void logmsg(const char *msg) {
+    time_t now = time(NULL);
+    struct tm *t = localtime(&now);
+    char ts[20];
+    strftime(ts, sizeof(ts), "%Y-%m-%d %H:%M:%S", t);
+    printf("[%s] %s\n", ts, msg);
+}
 
-void error(char *msg)
+void error(const char *msg)
 {
-    perror(msg);
-    exit(0);
+    char err_msg[256];
+    snprintf(err_msg, sizeof(err_msg), "ERROR: %s - %s", msg, strerror(errno));
+    logmsg(err_msg);
+    exit(1);
 }
 
 int main(int argc, char *argv[])
@@ -23,7 +34,7 @@ int main(int argc, char *argv[])
 
     if (argc < 3)
     {
-        fprintf(stderr, "usage %s hostname port buffer size\n", argv[0]);
+        logmsg("ERROR: uso incorrecto - se esperaba: <host> <port> <buffer size>");
         exit(0);
     }
 
@@ -32,7 +43,9 @@ int main(int argc, char *argv[])
     char buffer[buf_size];
     char message[2];
 
-    printf("tamaño de buffer: %d \n", buf_size);
+    char log_line[128];
+    snprintf(log_line, sizeof(log_line), "Tamaño de buffer: %d", buf_size);
+    logmsg(log_line);
 
     // TOMA EL NUMERO DE PUERTO DE LOS ARGUMENTOS
     portno = atoi(argv[2]);
@@ -49,7 +62,7 @@ int main(int argc, char *argv[])
     server = gethostbyname(argv[1]);
     if (server == NULL)
     {
-        fprintf(stderr, "ERROR, no such host\n");
+        logmsg("ERROR: no such host");
         exit(0);
     }
     bzero((char *)&serv_addr, sizeof(serv_addr));
@@ -62,7 +75,8 @@ int main(int argc, char *argv[])
     serv_addr.sin_port = htons(portno);
 
     // DESCRIPTOR - DIRECCION - TAMAÑO DIRECCION
-    if (connect(sockfd, &serv_addr, sizeof(serv_addr)) < 0)
+    //if (connect(sockfd, &serv_addr, sizeof(serv_addr)) < 0)
+    if (connect(sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)
         error("ERROR connecting");
 
     bzero(buffer, buf_size);
@@ -74,7 +88,8 @@ int main(int argc, char *argv[])
 
     int cant_bytes = strlen(buffer);
 
-    printf("cant bytes: %d\n", cant_bytes);
+    snprintf(log_line, sizeof(log_line), "Enviado cantidad de bytes del mensaje al proceso servidor (%d)", cant_bytes);
+    logmsg(log_line);
 
     // ENVIA CANTIDAD DE BYTES DEL MENSAJE AL SOCKET
     n = write(sockfd, &cant_bytes, sizeof(cant_bytes));
@@ -82,17 +97,19 @@ int main(int argc, char *argv[])
         error("ERROR writing cant bytes message to socket");
 
     // ESPERA RECIBIR UNA RESPUESTA
+    logmsg("Esperando respuesta del proceso servidor");
     n = read(sockfd, message, 2);
 
     if (n < 0)
         error("ERROR reading from socket");
 
     // ENVIA UN MENSAJE AL SOCKET
+    logmsg("Enviando mensaje al proceso servidor");
     n = write(sockfd, buffer, strlen(buffer));
     if (n < 0)
         error("ERROR writing message to socket");
     bzero(buffer, buf_size);
 
-    printf("%s\n", buffer);
+    logmsg("Fin de transmisión");
     return 0;
 }
