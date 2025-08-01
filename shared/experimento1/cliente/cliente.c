@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <arpa/inet.h>
 
-#define SERVER_IP "127.0.0.1"
+#define SERVER_IP "192.168.56.10"
 #define PORT 8080
 #define BUFFER_SIZE (1024 * 200) // 1KB
 #define DATA_SIZE (3 * 1024 * 1024) // 3 MB
@@ -13,7 +13,9 @@ int main() {
     int sock = 0;
     struct sockaddr_in serv_addr;
     char buffer[BUFFER_SIZE];
-    FILE *log = fopen("logs/client.log", "w");
+    FILE *log = fopen("/home/vagrant/cliente/logs/client.log", "w");
+    fprintf(log, "Enviando mensaje de saludo\n");
+    //return 0; // Commented out to prevent early exit
 
     // Paso 1: Sincronización entre cliente y servidor (envía mensaje de inicio)
     sock = socket(AF_INET, SOCK_STREAM, 0);
