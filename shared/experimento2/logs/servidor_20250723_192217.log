@@ -1,0 +1,11 @@
+[2025-07-23 19:22:17] Ejecutando en puerto 3999 con buffer 3MB...
+[2025-07-23 19:22:17] Tamaño de buffer: 3145728
+[2025-07-23 19:22:17] Esperando conexion
+[2025-07-23 19:22:19] Conexion establecida
+[2025-07-23 19:22:19] Recibiendo cantidad de bytes del mensaje a leer
+[2025-07-23 19:22:19] Cantidad de bytes del mensaje: 3145728
+[2025-07-23 19:22:19] Confirmando recepcion al proceso cliente
+[2025-07-23 19:22:19] Iniciando 5 segundos de delay
+[2025-07-23 19:22:24] Leyendo mensaje en Buffer
+[2025-07-23 19:22:24] Fin de la recepcion
+[2025-07-23 19:22:24] Código de finalizacion: 0
