@@ -98,7 +98,7 @@ int main(int argc, char *argv[])
   n = write(newsockfd, "ok", 2);
   bzero(buffer, buf_size);
 
-  logmsg("Iniciando 5 segundos de delay");
+  logmsg("Iniciando 15 segundos de delay");
   sleep(15); 
 
   // LEE EL MENSAJE DEL CLIENTE

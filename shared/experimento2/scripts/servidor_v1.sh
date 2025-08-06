@@ -4,14 +4,15 @@ logmsg() {
 }
 
 #!cd /vagrant_shared/experimento2 || exit 1
-mkdir -p logs
+mkdir -p ../logs/v1
 
-make
+make clean -C ..
+make -C ..
 
-LOG="logs/servidor_$(date +%Y%m%d_%H%M%S).log"
+LOG="../logs/v1/servidor_$(date +%Y%m%d_%H%M%S).log"
 
 logmsg "Ejecutando en puerto 3999 con buffer 3MB..." | tee -a "$LOG"
-./servidor 3999 3145728 >> "$LOG" 2>&1
+../exec/servidor_v1 3999 3145728 >> "$LOG" 2>&1
 
 RET=$?
 logmsg "Código de finalizacion: $RET" | tee -a "$LOG"

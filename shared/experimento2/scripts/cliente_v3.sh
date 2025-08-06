@@ -4,12 +4,12 @@ logmsg() {
 }
 
 #!cd /vagrant_shared/experimento2 || exit 1
-mkdir -p logs
+mkdir -p ../logs/v3
 
-LOG="logs/cliente_v2_$(date +%Y%m%d_%H%M%S).log"
+LOG="../logs/v3/cliente$(date +%Y%m%d_%H%M%S).log"
 
 logmsg "Ejecutando hacia 192.168.56.100:3999 con buffer 3MB..." | tee -a "$LOG"
-./cliente_v2 localhost 3999 3145728 >> "$LOG" 2>&1
+../exec/cliente_v3 localhost 3999 3145728 >> "$LOG" 2>&1
 
 RET=$?
 logmsg "Código de finalizacion $RET" | tee -a "$LOG"
