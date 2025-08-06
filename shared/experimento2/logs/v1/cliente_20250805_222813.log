@@ -1,7 +1,0 @@
-[2025-08-05 22:28:13] Ejecutando hacia 192.168.56.100:3999 con buffer 3MB...
-[2025-08-05 22:28:13] Tamaño de buffer: 3145728
-[2025-08-05 22:28:13] Enviado cantidad de bytes del mensaje al proceso servidor (3145734)
-[2025-08-05 22:28:13] Esperando respuesta del proceso servidor
-[2025-08-05 22:28:13] Enviando mensaje al proceso servidor
-[2025-08-05 22:28:28] Fin de transmisión
-[2025-08-05 22:28:28] Código de finalizacion 0
