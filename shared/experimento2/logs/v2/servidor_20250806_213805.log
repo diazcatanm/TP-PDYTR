@@ -1,0 +1,11 @@
+[2025-08-06 21:38:05] Ejecutando en puerto 5002 con buffer 3MB...
+[2025-08-06 21:38:05] Tamaño de buffer: 3145728
+[2025-08-06 21:38:05] Esperando conexion
+[2025-08-06 21:38:08] Conexion establecida
+[2025-08-06 21:38:08] Recibiendo cantidad de bytes del mensaje a leer
+[2025-08-06 21:38:08] Cantidad de bytes del mensaje: 3145734
+[2025-08-06 21:38:08] Confirmando recepcion al proceso cliente
+[2025-08-06 21:38:08] Iniciando 15 segundos de delay
+[2025-08-06 21:38:23] Leyendo mensaje en Buffer
+[2025-08-06 21:38:23] ERROR: ERROR reading from socket - Connection reset by peer
+[2025-08-06 21:38:23] Código de finalizacion: 1

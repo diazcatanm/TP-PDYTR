@@ -98,22 +98,33 @@ int main(int argc, char *argv[])
   n = write(newsockfd, "ok", 2);
   bzero(buffer, buf_size);
 
-  logmsg("Iniciando 5 segundos de delay");
-  sleep(5); 
+  logmsg("Iniciando 15 segundos de delay");
+  sleep(15); 
 
   // LEE EL MENSAJE DEL CLIENTE
   logmsg("Leyendo mensaje en Buffer");
-  int j = 0;
-  do
-  {
-    n = read(newsockfd, &buffer[j], cant_bytes);
-    if (n < 0)
-    {
-      error("ERROR reading from socket");
-      break;
-    }
-    j += n;
-  } while (j < cant_bytes);
+
+  int total_read = 0;
+  char logbuffer[128];
+
+  do {
+      n = read(newsockfd, &buffer[total_read], cant_bytes - total_read);
+      if (n > 0) {
+	  total_read += n;
+  	  snprintf(logbuffer, sizeof(logbuffer), "Leídos %d bytes (acumulado: %d)", n, total_read);
+ 	  logmsg(logbuffer);
+      } else if (n == 0) {
+	  snprintf(logbuffer, sizeof(logbuffer), "Conexión cerrada por el cliente. Solo se recibieron %d bytes de %d esperados", total_read, cant_bytes);
+	  logmsg(logbuffer);
+	  break;
+      } else {
+	  snprintf(logbuffer, sizeof(logbuffer), "ERROR leyendo del socket: %s", strerror(errno));
+	  logmsg(logbuffer);
+	  snprintf(logbuffer, sizeof(logbuffer), "Solo se recibieron %d bytes de %d esperados", total_read, cant_bytes);
+	  logmsg(logbuffer);
+	  exit(1);
+      }
+  } while (total_read < cant_bytes);
 
   logmsg("Fin de la recepcion");
   return 0;
