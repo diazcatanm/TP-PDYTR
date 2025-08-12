@@ -1,0 +1,30 @@
+Estableciendo conexion con el servidor...
+Conexion establecida
+
+	Bloque enviado: 110048 bytes
+	Bloque enviado: 94752 bytes
+	Bloque enviado: 77520 bytes
+Error: buffer de transmisión lleno (EAGAIN/EWOULDBLOCK)
+Error: buffer de transmisión lleno (EAGAIN/EWOULDBLOCK)
+Error: buffer de transmisión lleno (EAGAIN/EWOULDBLOCK)
+...
+Error: buffer de transmisión lleno (EAGAIN/EWOULDBLOCK)
+Error: buffer de transmisión lleno (EAGAIN/EWOULDBLOCK)
+Error: buffer de transmisión lleno (EAGAIN/EWOULDBLOCK)
+	Bloque enviado: 14480 bytes
+	Bloque enviado: 190320 bytes
+	Bloque enviado: 204800 bytes
+	Bloque enviado: 204800 bytes
+	Bloque enviado: 204800 bytes
+	Bloque enviado: 204800 bytes
+	Bloque enviado: 204800 bytes
+	Bloque enviado: 204800 bytes
+	Bloque enviado: 204800 bytes
+	Bloque enviado: 204800 bytes
+	Bloque enviado: 204800 bytes
+	Bloque enviado: 204800 bytes
+	Bloque enviado: 204800 bytes
+	Bloque enviado: 204800 bytes
+	Bloque enviado: 204800 bytes
+	Bloque enviado: 201892 bytes
+Cliente: Enviados 3145728 bytes

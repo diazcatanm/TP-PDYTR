@@ -1,0 +1,24 @@
+Esperando conexión...
+Conexión aceptada. Esperando mensaje de sincronización...
+
+Enviando mensaje de saludo
+Recibido saludo de sincronización del servidor: ACK
+	Bloque enviado de 204800 bytes
+	Bloque enviado de 204800 bytes
+	Bloque enviado de 204800 bytes
+	Bloque enviado de 204800 bytes
+	Bloque enviado de 204800 bytes
+	Bloque enviado de 204800 bytes
+	Bloque enviado de 204800 bytes
+	Bloque enviado de 204800 bytes
+	Bloque enviado de 204800 bytes
+	Bloque enviado de 204800 bytes
+	Bloque enviado de 204800 bytes
+	Bloque enviado de 204800 bytes
+	Bloque enviado de 204800 bytes
+	Bloque enviado de 204800 bytes
+	Bloque enviado de 204800 bytes
+	Bloque enviado de 73728 bytes
+Cliente: Enviados 3145728 bytes
+
+Fin y cierre de socket
