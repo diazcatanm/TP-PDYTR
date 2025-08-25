@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <arpa/inet.h>
 
-#define SERVER_IP "192.168.56.10"
+#define SERVER_IP "192.168.1.45"
 #define PORT 8080
 #define BUFFER_SIZE (1024 * 200) // 1KB
 #define DATA_SIZE (3 * 1024 * 1024) // 3 MB
@@ -13,29 +13,29 @@ int main() {
     int sock = 0;
     struct sockaddr_in serv_addr;
     char buffer[BUFFER_SIZE];
-    FILE *log = fopen("/home/vagrant/cliente/logs/client_v1.log", "w");
+    FILE *log = fopen("/home/vagrant/experimento_2/logs/cliente.log", "w");
 
     // Paso 1: Sincronización entre cliente y servidor (envía mensaje de inicio)
-    fprintf(log, "Esperando conexión...\n");
     sock = socket(AF_INET, SOCK_STREAM, 0);
     serv_addr.sin_family = AF_INET;
     serv_addr.sin_port = htons(PORT);
 
     inet_pton(AF_INET, SERVER_IP, &serv_addr.sin_addr);
-    connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr));
-    fprintf(log, "Conexión aceptada. Esperando mensaje de sincronización...\n\n");
-    fflush(log);
 
-    // Saludos entre el cliente y el servidor
+    connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr));
+
+    // Saludos al servidor
     fprintf(log, "Enviando mensaje de saludo\n");
+    fflush(log);
     strcpy(buffer, "Hola!");
     send(sock, buffer, strlen(buffer), 0);
-    int bytes = recv(sock, buffer, BUFFER_SIZE, 0);
-    buffer[bytes] = '\0';
-    fprintf(log, "Recibido saludo de sincronización del servidor: %s\n", buffer);
+
+
+    fprintf(log, "Transferencia de datos al servidor: %s\n", buffer);
     fflush(log);
-    
-    // Paso 3: Envía al menos 3MB de datos
+
+    // Paso 3: El cliente envía datos mientras el servidor se encuentra en delay
+    // Paso 4: Envía al menos 3MB de datos
     int sent = 0; int n = 0;
     memset(buffer, 'A', BUFFER_SIZE);
     while (sent < DATA_SIZE) {
@@ -47,11 +47,8 @@ int main() {
         fflush(log);
         sent += n;
     }
-    fprintf(log, "Cliente: Enviados %d bytes\n\n", sent);
-    
-    fprintf(log, "Fin y cierre de socket");
-    fflush(log);
-    fclose(log);
+    fprintf(log, "Cliente: Enviados %d bytes\n", sent);
+
     close(sock);
     return 0;
 }

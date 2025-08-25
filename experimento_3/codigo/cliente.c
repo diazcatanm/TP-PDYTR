@@ -6,7 +6,7 @@
 #include <fcntl.h>
 #include <errno.h>
 
-#define SERVER_IP "192.168.56.10"
+#define SERVER_IP "192.168.1.45"
 #define PORT 8081
 #define BUFFER_SIZE (1024 * 200) // 1KB
 #define DATA_SIZE (3 * 1024 * 1024) // 3 MB
@@ -15,7 +15,7 @@ int main() {
     int sock = 0;
     struct sockaddr_in serv_addr;
     char buffer[BUFFER_SIZE];
-    FILE *log = fopen("/home/vagrant/cliente/logs/client_v3.log", "w");
+    FILE *log = fopen("/home/vagrant/experimento_2/logs/cliente.log", "w");
 
     fprintf(log, "Estableciendo conexion con el servidor...\n");
     fflush(log);
