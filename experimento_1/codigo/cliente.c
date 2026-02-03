@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include <fcntl.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -26,22 +25,6 @@ void error(const char *msg)
     logmsg(err_msg);
     exit(1);
 }
-
-int close_now(int sockfd) {
-    struct linger sl = { .l_onoff = 1, .l_linger = 0 };
-
-    if (setsockopt(sockfd, SOL_SOCKET, SO_LINGER, &sl, sizeof(sl)) < 0) {
-        perror("setsockopt");
-        return -1;
-    }
-    logmsg("Forzando cierre de la conexion");
-
-    // Cerrar sin esperar
-    shutdown(sockfd, SHUT_RDWR); // Esto refuerza el cierre (no estrictamente necesario)
-    close(sockfd);
-    return 0;
-}
-
 
 int main(int argc, char *argv[])
 {
@@ -120,9 +103,6 @@ int main(int argc, char *argv[])
     if (n < 0)
         error("ERROR reading from socket");
 
-    //ESTABLECE COMO NO BLOQUEANTE
-    fcntl(sockfd, F_SETFL, fcntl(sockfd, F_GETFL, 0) | O_NONBLOCK);
-    
     // ENVIA UN MENSAJE AL SOCKET
     logmsg("Enviando mensaje al proceso servidor");
     n = write(sockfd, buffer, strlen(buffer));
@@ -130,9 +110,6 @@ int main(int argc, char *argv[])
         error("ERROR writing message to socket");
     bzero(buffer, buf_size);
     
-    //CIERRE ABRUPTO
-    struct linger sl = { .l_onoff = 1, .l_linger = 0 };
-    setsockopt(sockfd, SOL_SOCKET, SO_LINGER, &sl, sizeof(sl));
     close(sockfd);
 
     logmsg("Fin de transmisión");

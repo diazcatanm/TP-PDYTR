@@ -130,10 +130,14 @@ int main(int argc, char *argv[])
         error("ERROR writing message to socket");
     bzero(buffer, buf_size);
     
+    
+    snprintf(log_line, sizeof(log_line), "Bytes enviados al kernel: %d", n);
+    logmsg(log_line);
+    
     //CIERRE ABRUPTO
     struct linger sl = { .l_onoff = 1, .l_linger = 0 };
     setsockopt(sockfd, SOL_SOCKET, SO_LINGER, &sl, sizeof(sl));
-    close(sockfd);
+    
 
     logmsg("Fin de transmisión");
     return 0;
