@@ -29,7 +29,7 @@ Desde la raíz del repositorio, las máquinas virtuales son iniciadas mediante e
 La compilación de cada caso, la limpieza de puertos y la recolección de trazas son gestionadas por el script `run_experimentos.sh`. Los permisos son otorgados y el proceso es iniciado de la siguiente manera:
 
 ```bash
-chmod +x run_all.sh
+chmod +x run_experimentos.sh
 ./run_experimentos.sh
 ```
 
