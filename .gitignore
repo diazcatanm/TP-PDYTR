@@ -1,3 +1,7 @@
+# Binarios específicos
+server
+client
+
 # Prerequisites
 *.d
 
