@@ -41,12 +41,3 @@ Dos archivos de log independientes son generados dentro de la carpeta de cada ex
 
 * log_cliente.txt: El volumen de datos entregado satisfactoriamente al kernel y el estado final de la transmisión son documentados aquí.
 
-## Estructura del Proyecto
-
-La integridad de las rutas es mantenida bajo el siguiente esquema:
-/TP-PDYTR
-├── /experimento1_bloqueante # Casos con sockets bloqueantes.
-├── /experimento2_no_bloqueante # Casos con sockets no bloqueantes.
-├── Vagrantfile # Configuración de red de las máquinas.
-├── run_experimentos.sh # Script de orquestación de experimentos.
-└── README.md
