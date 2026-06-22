@@ -1,0 +1,7 @@
+vagrant@vm1:/vagrant_shared/codigo$ ./cliente 192.168.50.11 8000 5000000
+[2026-03-02 03:34:34] Tamaño de buffer: 5000000
+[2026-03-02 03:34:34] Enviado cantidad de bytes del mensaje al proceso servidor (5000006)
+[2026-03-02 03:34:34] Esperando respuesta del proceso servidor
+[2026-03-02 03:34:34] Enviando mensaje al proceso servidor
+[2026-03-02 03:34:49] Bytes enviados al kernel: 5000006
+[2026-03-02 03:34:49] Fin de transmisión
