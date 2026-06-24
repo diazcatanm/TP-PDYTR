@@ -100,14 +100,10 @@ int main(int argc, char *argv[])
 
     //**********************************************//
 
-    // ACHICA EL BUFFER DE ENVIO DEL KERNEL PARA FORZAR EL ERROR CON MENSAJE CHICO
-    // Linux duplica internamente el valor y aplica un mínimo, pero lo reduce considerablemente
-    int sndbuf_size = 1;
-    setsockopt(sockfd, SOL_SOCKET, SO_SNDBUF, &sndbuf_size, sizeof(sndbuf_size));
     // GENERA MENSAJE
     memset((buffer), 'a', buf_size);
 
-     int cant_bytes = strlen(buffer);
+    int cant_bytes = strlen(buffer);
 
     snprintf(log_line, sizeof(log_line), "Enviado cantidad de bytes del mensaje al proceso servidor (%d)", cant_bytes);
     logmsg(log_line);
@@ -124,8 +120,7 @@ int main(int argc, char *argv[])
     if (n < 0)
         error("ERROR reading from socket");
 
-    //ESTABLECE COMO NO BLOQUEANTE
-    fcntl(sockfd, F_SETFL, fcntl(sockfd, F_GETFL, 0) | O_NONBLOCK);
+    logmsg("Comunicacion bloqueante seteada");
     
     // ENVIA UN MENSAJE AL SOCKET
     logmsg("Enviando mensaje al proceso servidor");
@@ -133,7 +128,6 @@ int main(int argc, char *argv[])
     if (n < 0)
         error("ERROR writing message to socket");
     bzero(buffer, buf_size);
-    
     
     snprintf(log_line, sizeof(log_line), "Bytes enviados al kernel: %d", n);
     logmsg(log_line);

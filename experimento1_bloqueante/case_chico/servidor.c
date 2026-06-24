@@ -80,33 +80,14 @@ int main(int argc, char *argv[])
   // DEVUELVE UN NUEVO DESCRIPTOR POR EL CUAL SE VAN A REALIZAR LAS COMUNICACIONES
   if (newsockfd < 0)
     error("ERROR on accept");
-
-  int rcvbuf_actual;
-  socklen_t optlen = sizeof(rcvbuf_actual);
-  getsockopt(newsockfd, SOL_SOCKET, SO_RCVBUF, &rcvbuf_actual, &optlen);
-  snprintf(log_line, sizeof(log_line), "Buffer de recepcion del kernel: %d bytes", rcvbuf_actual);
-  logmsg(log_line);
-
   bzero(buffer, buf_size);
   
   logmsg("Conexion establecida");
 
-  // LEE CANT DE BYTES QUE RECIBIRA
-  logmsg("Recibiendo cantidad de bytes del mensaje a leer");
   int cant_bytes;
-  n = read(newsockfd, &cant_bytes, sizeof(int));
-  snprintf(log_line, sizeof(log_line), "Cantidad de bytes del mensaje: %d", cant_bytes);
-  logmsg(log_line);
 
-  bzero(buffer, buf_size);
-
-  // RESPONDE AL CLIENTE
-  logmsg("Confirmando recepcion al proceso cliente");
-  n = write(newsockfd, "ok", 2);
-  bzero(buffer, buf_size);
-
-  logmsg("Iniciando 15 segundos de delay");
-  sleep(15); 
+  logmsg("Iniciando 5 segundos de delay");
+  sleep(10); 
 
   // LEE EL MENSAJE DEL CLIENTE
   logmsg("Leyendo mensaje en Buffer");

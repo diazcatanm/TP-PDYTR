@@ -26,11 +26,9 @@ void error(const char *msg)
 
 int main(int argc, char *argv[])
 {
-  //int sockfd, newsockfd, portno, clilen;
   struct sockaddr_in serv_addr, cli_addr;
   int sockfd, newsockfd, portno;
   socklen_t clilen;
-
   int n;
 
   if (argc < 3)
@@ -47,44 +45,41 @@ int main(int argc, char *argv[])
 
   char buffer[buf_size];
 
-  // CREA EL FILE DESCRIPTOR DEL SOCKET PARA LA CONEXION
   sockfd = socket(AF_INET, SOCK_STREAM, 0);
-  // AF_INET - FAMILIA DEL PROTOCOLO - IPV4 PROTOCOLS INTERNET
-  // SOCK_STREAM - TIPO DE SOCKET
-
   if (sockfd < 0)
     error("ERROR opening socket");
+
   bzero((char *)&serv_addr, sizeof(serv_addr));
-  // ASIGNA EL PUERTO PASADO POR ARGUMENTO
-  // ASIGNA LA IP EN DONDE ESCUCHA (SU PROPIA IP)
   portno = atoi(argv[1]);
   serv_addr.sin_family = AF_INET;
   serv_addr.sin_addr.s_addr = INADDR_ANY;
   serv_addr.sin_port = htons(portno);
 
-  // VINCULA EL FILE DESCRIPTOR CON LA DIRECCION Y EL PUERTO
-  if (bind(sockfd, (struct sockaddr *)&serv_addr,
-           sizeof(serv_addr)) < 0)
+  if (bind(sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)
     error("ERROR on binding");
 
-  // SETEA LA CANTIDAD QUE PUEDEN ESPERAR MIENTRAS SE MANEJA UNA CONEXION
   listen(sockfd, 5);
 
-  // SE BLOQUEA A ESPERAR UNA CONEXION
   logmsg("Esperando conexion");
   clilen = sizeof(cli_addr);
-  newsockfd = accept(sockfd,
-                     (struct sockaddr *)&cli_addr,
-                     &clilen);
-
-  // DEVUELVE UN NUEVO DESCRIPTOR POR EL CUAL SE VAN A REALIZAR LAS COMUNICACIONES
+  newsockfd = accept(sockfd, (struct sockaddr *)&cli_addr, &clilen);
   if (newsockfd < 0)
     error("ERROR on accept");
+
+  // ACHICA EL BUFFER DE RECEPCION DEL KERNEL
+  int rcvbuf_size = 4096;
+  setsockopt(newsockfd, SOL_SOCKET, SO_RCVBUF, &rcvbuf_size, sizeof(rcvbuf_size));
+
+  // LOGUEA EL VALOR REAL QUE ASIGNO EL KERNEL (puede diferir del pedido)
+  int rcvbuf_actual;
+  socklen_t optlen = sizeof(rcvbuf_actual);
+  getsockopt(newsockfd, SOL_SOCKET, SO_RCVBUF, &rcvbuf_actual, &optlen);
+  snprintf(log_line, sizeof(log_line), "Buffer de recepcion del kernel: %d bytes", rcvbuf_actual);
+  logmsg(log_line);
+
   bzero(buffer, buf_size);
-  
   logmsg("Conexion establecida");
 
-  // LEE CANT DE BYTES QUE RECIBIRA
   logmsg("Recibiendo cantidad de bytes del mensaje a leer");
   int cant_bytes;
   n = read(newsockfd, &cant_bytes, sizeof(int));
@@ -93,15 +88,13 @@ int main(int argc, char *argv[])
 
   bzero(buffer, buf_size);
 
-  // RESPONDE AL CLIENTE
   logmsg("Confirmando recepcion al proceso cliente");
   n = write(newsockfd, "ok", 2);
   bzero(buffer, buf_size);
 
   logmsg("Iniciando 15 segundos de delay");
-  sleep(15); 
+  sleep(15);
 
-  // LEE EL MENSAJE DEL CLIENTE
   logmsg("Leyendo mensaje en Buffer");
 
   int total_read = 0;
@@ -110,19 +103,19 @@ int main(int argc, char *argv[])
   do {
       n = read(newsockfd, &buffer[total_read], cant_bytes - total_read);
       if (n > 0) {
-	  total_read += n;
-  	  snprintf(logbuffer, sizeof(logbuffer), "Leídos %d bytes (acumulado: %d)", n, total_read);
- 	  logmsg(logbuffer);
+          total_read += n;
+          snprintf(logbuffer, sizeof(logbuffer), "Leídos %d bytes (acumulado: %d)", n, total_read);
+          logmsg(logbuffer);
       } else if (n == 0) {
-	  snprintf(logbuffer, sizeof(logbuffer), "Conexión cerrada por el cliente. Solo se recibieron %d bytes de %d esperados", total_read, cant_bytes);
-	  logmsg(logbuffer);
-	  break;
+          snprintf(logbuffer, sizeof(logbuffer), "Conexión cerrada por el cliente. Solo se recibieron %d bytes de %d esperados", total_read, cant_bytes);
+          logmsg(logbuffer);
+          break;
       } else {
-	  snprintf(logbuffer, sizeof(logbuffer), "ERROR leyendo del socket: %s", strerror(errno));
-	  logmsg(logbuffer);
-	  snprintf(logbuffer, sizeof(logbuffer), "Solo se recibieron %d bytes de %d esperados", total_read, cant_bytes);
-	  logmsg(logbuffer);
-	  exit(1);
+          snprintf(logbuffer, sizeof(logbuffer), "ERROR leyendo del socket: %s", strerror(errno));
+          logmsg(logbuffer);
+          snprintf(logbuffer, sizeof(logbuffer), "Solo se recibieron %d bytes de %d esperados", total_read, cant_bytes);
+          logmsg(logbuffer);
+          exit(1);
       }
   } while (total_read < cant_bytes);
 

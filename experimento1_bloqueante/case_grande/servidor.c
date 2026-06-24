@@ -80,13 +80,6 @@ int main(int argc, char *argv[])
   // DEVUELVE UN NUEVO DESCRIPTOR POR EL CUAL SE VAN A REALIZAR LAS COMUNICACIONES
   if (newsockfd < 0)
     error("ERROR on accept");
-
-  int rcvbuf_actual;
-  socklen_t optlen = sizeof(rcvbuf_actual);
-  getsockopt(newsockfd, SOL_SOCKET, SO_RCVBUF, &rcvbuf_actual, &optlen);
-  snprintf(log_line, sizeof(log_line), "Buffer de recepcion del kernel: %d bytes", rcvbuf_actual);
-  logmsg(log_line);
-
   bzero(buffer, buf_size);
   
   logmsg("Conexion establecida");

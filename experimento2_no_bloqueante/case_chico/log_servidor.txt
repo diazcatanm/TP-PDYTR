@@ -1,10 +1,12 @@
-[2026-02-17 20:27:11] Tamaño de buffer: 10
-[2026-02-17 20:27:11] Esperando conexion
-[2026-02-17 20:27:14] Conexion establecida
-[2026-02-17 20:27:14] Recibiendo cantidad de bytes del mensaje a leer
-[2026-02-17 20:27:14] Cantidad de bytes del mensaje: 14
-[2026-02-17 20:27:14] Confirmando recepcion al proceso cliente
-[2026-02-17 20:27:14] Iniciando 15 segundos de delay
-[2026-02-17 20:27:29] Leyendo mensaje en Buffer
-[2026-02-17 20:27:29] Leídos 14 bytes (acumulado: 14)
-[2026-02-17 20:27:29] Fin de la recepcion
+[2026-06-24 02:12:47] Tamaño de buffer: 9216
+[2026-06-24 02:12:47] Esperando conexion
+[2026-06-24 02:12:50] Buffer de recepcion del kernel: 8192 bytes
+[2026-06-24 02:12:50] Conexion establecida
+[2026-06-24 02:12:50] Recibiendo cantidad de bytes del mensaje a leer
+[2026-06-24 02:12:50] Cantidad de bytes del mensaje: 9222
+[2026-06-24 02:12:50] Confirmando recepcion al proceso cliente
+[2026-06-24 02:12:50] Iniciando 15 segundos de delay
+[2026-06-24 02:13:05] Leyendo mensaje en Buffer
+[2026-06-24 02:13:05] Leídos 7240 bytes (acumulado: 7240)
+[2026-06-24 02:13:05] ERROR leyendo del socket: Connection reset by peer
+[2026-06-24 02:13:05] Solo se recibieron 7240 bytes de 9222 esperados
