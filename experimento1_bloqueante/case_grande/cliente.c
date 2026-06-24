@@ -107,6 +107,7 @@ int main(int argc, char *argv[])
 
     snprintf(log_line, sizeof(log_line), "Enviado cantidad de bytes del mensaje al proceso servidor (%d)", cant_bytes);
     logmsg(log_line);
+<<<<<<<< HEAD:experimento1_bloqueante/case_grande/cliente.c
 
     // ENVIA CANTIDAD DE BYTES DEL MENSAJE AL SOCKET
     n = write(sockfd, &cant_bytes, sizeof(cant_bytes));
@@ -121,6 +122,8 @@ int main(int argc, char *argv[])
         error("ERROR reading from socket");
 
     logmsg("Comunicacion bloqueante seteada");
+========
+>>>>>>>> main:bloqueante_buffer_chico/codigo/cliente.c
     
     // ENVIA UN MENSAJE AL SOCKET
     logmsg("Enviando mensaje al proceso servidor");
