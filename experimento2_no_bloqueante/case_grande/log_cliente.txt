@@ -1,0 +1,6 @@
+[2026-06-24 02:12:19] Tamaño de buffer: 3145728
+[2026-06-24 02:12:19] Enviado cantidad de bytes del mensaje al proceso servidor (3145734)
+[2026-06-24 02:12:19] Esperando respuesta del proceso servidor
+[2026-06-24 02:12:19] Enviando mensaje al proceso servidor
+[2026-06-24 02:12:19] Bytes enviados al kernel: 110048
+[2026-06-24 02:12:19] Fin de transmisión

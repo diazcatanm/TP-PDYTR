@@ -1,8 +1,0 @@
-vagrant@vm2:/vagrant_shared/codigo$ ./servidor 8001 10
-[2026-03-08 04:06:07] Tamaño de buffer: 10
-[2026-03-08 04:06:07] Esperando conexion
-[2026-03-08 04:06:12] Conexion establecida
-[2026-03-08 04:06:12] Iniciando 5 segundos de delay
-[2026-03-08 04:06:22] Leyendo mensaje en Buffer
-[2026-03-08 04:06:22] Conexión cerrada por el cliente. Solo se recibieron 0 bytes de 0 esperados
-[2026-03-08 04:06:22] Fin de la recepcion
