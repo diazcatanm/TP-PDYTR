@@ -37,7 +37,7 @@ int close_now(int sockfd) {
     logmsg("Forzando cierre de la conexion");
 
     // Cerrar sin esperar
-    shutdown(sockfd, SHUT_RDWR); // Esto refuerza el cierre (no estrictamente necesario)
+    shutdown(sockfd, SHUT_RDWR); 
     close(sockfd);
     return 0;
 }
@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
     snprintf(log_line, sizeof(log_line), "Tamaño de buffer: %d", buf_size);
     logmsg(log_line);
 
-    // TOMA EL NUMERO DE PUERTO DE LOS ARGUMENTOS
+    // PUERTO SETEADO DESDE ARGS
     portno = atoi(argv[2]);
 
     // CREA EL FILE DESCRIPTOR DEL SOCKET PARA LA CONEXION
@@ -75,7 +75,7 @@ int main(int argc, char *argv[])
     if (sockfd < 0)
         error("ERROR opening socket");
 
-    // TOMA LA DIRECCION DEL SERVER DE LOS ARGUMENTOS
+    //DIREC DEL SERVER DESDE ARGS
     server = gethostbyname(argv[1]);
     if (server == NULL)
     {
@@ -92,15 +92,21 @@ int main(int argc, char *argv[])
     serv_addr.sin_port = htons(portno);
 
     // DESCRIPTOR - DIRECCION - TAMAÑO DIRECCION
-    //if (connect(sockfd, &serv_addr, sizeof(serv_addr)) < 0)
     if (connect(sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)
         error("ERROR connecting");
 
     bzero(buffer, buf_size);
 
+    //log del tamaño del buffer del kernel
+    int sndbuf_actual;
+    socklen_t optlen_snd = sizeof(sndbuf_actual);
+    getsockopt(sockfd, SOL_SOCKET, SO_SNDBUF, &sndbuf_actual, &optlen_snd);
+    snprintf(log_line, sizeof(log_line), "Buffer de envio del kernel: %d bytes", sndbuf_actual);
+    logmsg(log_line);
+
     //**********************************************//
 
-    // GENERA MENSAJE
+    // GENERACION DE MENSAJE
     memset((buffer), 'a', buf_size);
 
     int cant_bytes = strlen(buffer);

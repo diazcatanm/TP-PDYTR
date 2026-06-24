@@ -37,7 +37,7 @@ int close_now(int sockfd) {
     logmsg("Forzando cierre de la conexion");
 
     // Cerrar sin esperar
-    shutdown(sockfd, SHUT_RDWR); // Esto refuerza el cierre (no estrictamente necesario)
+    shutdown(sockfd, SHUT_RDWR); 
     close(sockfd);
     return 0;
 }
@@ -64,18 +64,16 @@ int main(int argc, char *argv[])
     snprintf(log_line, sizeof(log_line), "Tamaño de buffer: %d", buf_size);
     logmsg(log_line);
 
-    // TOMA EL NUMERO DE PUERTO DE LOS ARGUMENTOS
+    // NRO PUERTO EN ARGS
     portno = atoi(argv[2]);
 
     // CREA EL FILE DESCRIPTOR DEL SOCKET PARA LA CONEXION
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
-    // AF_INET - FAMILIA DEL PROTOCOLO - IPV4 PROTOCOLS INTERNET
-    // SOCK_STREAM - TIPO DE SOCKET
 
     if (sockfd < 0)
         error("ERROR opening socket");
 
-    // TOMA LA DIRECCION DEL SERVER DE LOS ARGUMENTOS
+    // DIRECCION DEL SERVER EN ARGS
     server = gethostbyname(argv[1]);
     if (server == NULL)
     {
@@ -92,19 +90,24 @@ int main(int argc, char *argv[])
     serv_addr.sin_port = htons(portno);
 
     // DESCRIPTOR - DIRECCION - TAMAÑO DIRECCION
-    //if (connect(sockfd, &serv_addr, sizeof(serv_addr)) < 0)
     if (connect(sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)
         error("ERROR connecting");
 
     bzero(buffer, buf_size);
 
-    //**********************************************//
-
-    // ACHICA EL BUFFER DE ENVIO DEL KERNEL PARA FORZAR EL ERROR CON MENSAJE CHICO
-    // Linux duplica internamente el valor y aplica un mínimo, pero lo reduce considerablemente
+    // DISMINUIR EL BUFFER DE ENVIO DEL KERNEL 
     int sndbuf_size = 1;
     setsockopt(sockfd, SOL_SOCKET, SO_SNDBUF, &sndbuf_size, sizeof(sndbuf_size));
-    // GENERA MENSAJE
+    
+    int sndbuf_actual;
+    socklen_t optlen_snd = sizeof(sndbuf_actual);
+    getsockopt(sockfd, SOL_SOCKET, SO_SNDBUF, &sndbuf_actual, &optlen_snd);
+    snprintf(log_line, sizeof(log_line), "Buffer de envio del kernel: %d bytes", sndbuf_actual);
+    logmsg(log_line);
+
+    //*******************************************************************************************************//
+    
+    // GENERA MENSAJE PARA ENVIO
     memset((buffer), 'a', buf_size);
 
      int cant_bytes = strlen(buffer);
@@ -127,7 +130,7 @@ int main(int argc, char *argv[])
     //ESTABLECE COMO NO BLOQUEANTE
     fcntl(sockfd, F_SETFL, fcntl(sockfd, F_GETFL, 0) | O_NONBLOCK);
     
-    // ENVIA UN MENSAJE AL SOCKET
+    // ENVIA MENSAJE AL SOCKET
     logmsg("Enviando mensaje al proceso servidor");
     n = write(sockfd, buffer, strlen(buffer));
     if (n < 0)

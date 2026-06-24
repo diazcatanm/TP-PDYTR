@@ -66,11 +66,11 @@ int main(int argc, char *argv[])
   if (newsockfd < 0)
     error("ERROR on accept");
 
-  // ACHICA EL BUFFER DE RECEPCION DEL KERNEL
+  // DISMINUCION DEL BUFFER DE RECEPCION DEL KERNEL
   int rcvbuf_size = 4096;
   setsockopt(newsockfd, SOL_SOCKET, SO_RCVBUF, &rcvbuf_size, sizeof(rcvbuf_size));
 
-  // LOGUEA EL VALOR REAL QUE ASIGNO EL KERNEL (puede diferir del pedido)
+  // LOG TAMAÑO ACEPTADO PARA EL BUFFER KERNEL
   int rcvbuf_actual;
   socklen_t optlen = sizeof(rcvbuf_actual);
   getsockopt(newsockfd, SOL_SOCKET, SO_RCVBUF, &rcvbuf_actual, &optlen);

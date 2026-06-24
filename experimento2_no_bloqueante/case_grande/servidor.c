@@ -81,6 +81,7 @@ int main(int argc, char *argv[])
   if (newsockfd < 0)
     error("ERROR on accept");
 
+  //Log del tamaño del buffer de recepcion (kernel) 
   int rcvbuf_actual;
   socklen_t optlen = sizeof(rcvbuf_actual);
   getsockopt(newsockfd, SOL_SOCKET, SO_RCVBUF, &rcvbuf_actual, &optlen);
