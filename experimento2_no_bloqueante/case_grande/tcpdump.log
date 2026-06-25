@@ -1,16 +1,16 @@
 tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
 listening on enp0s8, link-type EN10MB (Ethernet), snapshot length 262144 bytes
-02:12:19.179094 IP 192.168.1.74.44214 > 192.168.1.45.5005: Flags [S], seq 1047082121, win 64240, options [mss 1460,sackOK,TS val 223735192 ecr 0,nop,wscale 6], length 0
-02:12:19.179118 IP 192.168.1.45.5005 > 192.168.1.74.44214: Flags [S.], seq 135516346, ack 1047082122, win 65160, options [mss 1460,sackOK,TS val 1988694516 ecr 223735192,nop,wscale 6], length 0
-02:12:19.179284 IP 192.168.1.74.44214 > 192.168.1.45.5005: Flags [.], ack 1, win 1004, options [nop,nop,TS val 223735193 ecr 1988694516], length 0
-02:12:19.179870 IP 192.168.1.74.44214 > 192.168.1.45.5005: Flags [P.], seq 1:5, ack 1, win 1004, options [nop,nop,TS val 223735193 ecr 1988694516], length 4
-02:12:19.179883 IP 192.168.1.45.5005 > 192.168.1.74.44214: Flags [.], ack 5, win 1019, options [nop,nop,TS val 1988694517 ecr 223735193], length 0
-02:12:19.180100 IP 192.168.1.45.5005 > 192.168.1.74.44214: Flags [P.], seq 1:3, ack 5, win 1019, options [nop,nop,TS val 1988694517 ecr 223735193], length 2
-02:12:19.180201 IP 192.168.1.74.44214 > 192.168.1.45.5005: Flags [.], ack 3, win 1004, options [nop,nop,TS val 223735194 ecr 1988694517], length 0
-02:12:19.180327 IP 192.168.1.74.44214 > 192.168.1.45.5005: Flags [P.], seq 5:7245, ack 3, win 1004, options [nop,nop,TS val 223735194 ecr 1988694517], length 7240
-02:12:19.180327 IP 192.168.1.74.44214 > 192.168.1.45.5005: Flags [.], seq 7245:11589, ack 3, win 1004, options [nop,nop,TS val 223735194 ecr 1988694517], length 4344
-02:12:19.180369 IP 192.168.1.74.44214 > 192.168.1.45.5005: Flags [P.], seq 11589:14485, ack 3, win 1004, options [nop,nop,TS val 223735194 ecr 1988694517], length 2896
-02:12:19.180653 IP 192.168.1.74.44214 > 192.168.1.45.5005: Flags [R.], seq 14485, ack 3, win 1004, options [nop,nop,TS val 223735194 ecr 1988694517], length 0
+01:04:01.973784 IP 192.168.1.74.58018 > 192.168.1.45.5005: Flags [S], seq 1199657304, win 64240, options [mss 1460,sackOK,TS val 735690615 ecr 0,nop,wscale 6], length 0
+01:04:01.973806 IP 192.168.1.45.5005 > 192.168.1.74.58018: Flags [S.], seq 717070793, ack 1199657305, win 65160, options [mss 1460,sackOK,TS val 2131192637 ecr 735690615,nop,wscale 6], length 0
+01:04:01.973983 IP 192.168.1.74.58018 > 192.168.1.45.5005: Flags [.], ack 1, win 1004, options [nop,nop,TS val 735690616 ecr 2131192637], length 0
+01:04:01.974566 IP 192.168.1.74.58018 > 192.168.1.45.5005: Flags [P.], seq 1:5, ack 1, win 1004, options [nop,nop,TS val 735690616 ecr 2131192637], length 4
+01:04:01.974577 IP 192.168.1.45.5005 > 192.168.1.74.58018: Flags [.], ack 5, win 1019, options [nop,nop,TS val 2131192638 ecr 735690616], length 0
+01:04:01.974788 IP 192.168.1.45.5005 > 192.168.1.74.58018: Flags [P.], seq 1:3, ack 5, win 1019, options [nop,nop,TS val 2131192638 ecr 735690616], length 2
+01:04:01.974847 IP 192.168.1.74.58018 > 192.168.1.45.5005: Flags [.], ack 3, win 1004, options [nop,nop,TS val 735690617 ecr 2131192638], length 0
+01:04:01.974959 IP 192.168.1.74.58018 > 192.168.1.45.5005: Flags [P.], seq 5:7245, ack 3, win 1004, options [nop,nop,TS val 735690617 ecr 2131192638], length 7240
+01:04:01.974959 IP 192.168.1.74.58018 > 192.168.1.45.5005: Flags [.], seq 7245:11589, ack 3, win 1004, options [nop,nop,TS val 735690617 ecr 2131192638], length 4344
+01:04:01.975006 IP 192.168.1.74.58018 > 192.168.1.45.5005: Flags [P.], seq 11589:14485, ack 3, win 1004, options [nop,nop,TS val 735690617 ecr 2131192638], length 2896
+01:04:01.975517 IP 192.168.1.74.58018 > 192.168.1.45.5005: Flags [R.], seq 14485, ack 3, win 1004, options [nop,nop,TS val 735690617 ecr 2131192638], length 0
 
 11 packets captured
 11 packets received by filter

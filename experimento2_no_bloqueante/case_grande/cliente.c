@@ -64,18 +64,16 @@ int main(int argc, char *argv[])
     snprintf(log_line, sizeof(log_line), "Tamaño de buffer: %d", buf_size);
     logmsg(log_line);
 
-    // PUERTO SETEADO DESDE ARGS
+    // NRO PUERTO EN ARGS
     portno = atoi(argv[2]);
 
     // CREA EL FILE DESCRIPTOR DEL SOCKET PARA LA CONEXION
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
-    // AF_INET - FAMILIA DEL PROTOCOLO - IPV4 PROTOCOLS INTERNET
-    // SOCK_STREAM - TIPO DE SOCKET
 
     if (sockfd < 0)
         error("ERROR opening socket");
 
-    //DIREC DEL SERVER DESDE ARGS
+    // DIRECCION DEL SERVER EN ARGS
     server = gethostbyname(argv[1]);
     if (server == NULL)
     {
@@ -97,19 +95,19 @@ int main(int argc, char *argv[])
 
     bzero(buffer, buf_size);
 
-    //log del tamaño del buffer del kernel
+    // log tamaño buffer envio kernel
     int sndbuf_actual;
     socklen_t optlen_snd = sizeof(sndbuf_actual);
     getsockopt(sockfd, SOL_SOCKET, SO_SNDBUF, &sndbuf_actual, &optlen_snd);
     snprintf(log_line, sizeof(log_line), "Buffer de envio del kernel: %d bytes", sndbuf_actual);
     logmsg(log_line);
 
-    //**********************************************//
-
-    // GENERACION DE MENSAJE
+    //*******************************************************************************************************//
+    
+    // GENERA MENSAJE PARA ENVIO
     memset((buffer), 'a', buf_size);
 
-    int cant_bytes = strlen(buffer);
+     int cant_bytes = strlen(buffer);
 
     snprintf(log_line, sizeof(log_line), "Enviado cantidad de bytes del mensaje al proceso servidor (%d)", cant_bytes);
     logmsg(log_line);
@@ -126,14 +124,16 @@ int main(int argc, char *argv[])
     if (n < 0)
         error("ERROR reading from socket");
 
-    logmsg("Comunicacion bloqueante seteada");
+    //ESTABLECE COMO NO BLOQUEANTE
+    fcntl(sockfd, F_SETFL, fcntl(sockfd, F_GETFL, 0) | O_NONBLOCK);
     
-    // ENVIA UN MENSAJE AL SOCKET
+    // ENVIA MENSAJE AL SOCKET
     logmsg("Enviando mensaje al proceso servidor");
     n = write(sockfd, buffer, strlen(buffer));
     if (n < 0)
         error("ERROR writing message to socket");
     bzero(buffer, buf_size);
+    
     
     snprintf(log_line, sizeof(log_line), "Bytes enviados al kernel: %d", n);
     logmsg(log_line);

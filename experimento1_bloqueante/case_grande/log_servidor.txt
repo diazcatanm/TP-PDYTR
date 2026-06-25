@@ -1,33 +1,21 @@
-[2026-06-24 02:10:57] Tamaño de buffer: 3145728
-[2026-06-24 02:10:57] Esperando conexion
-[2026-06-24 02:11:01] Conexion establecida
-[2026-06-24 02:11:01] Recibiendo cantidad de bytes del mensaje a leer
-[2026-06-24 02:11:01] Cantidad de bytes del mensaje: 3145734
-[2026-06-24 02:11:01] Confirmando recepcion al proceso cliente
-[2026-06-24 02:11:01] Iniciando 15 segundos de delay
-[2026-06-24 02:11:16] Leyendo mensaje en Buffer
-[2026-06-24 02:11:16] Leídos 90904 bytes (acumulado: 90904)
-[2026-06-24 02:11:16] Leídos 14480 bytes (acumulado: 105384)
-[2026-06-24 02:11:16] Leídos 279784 bytes (acumulado: 385168)
-[2026-06-24 02:11:16] Leídos 495216 bytes (acumulado: 880384)
-[2026-06-24 02:11:16] Leídos 264984 bytes (acumulado: 1145368)
-[2026-06-24 02:11:16] Leídos 92672 bytes (acumulado: 1238040)
-[2026-06-24 02:11:16] Leídos 92672 bytes (acumulado: 1330712)
-[2026-06-24 02:11:16] Leídos 92672 bytes (acumulado: 1423384)
-[2026-06-24 02:11:16] Leídos 92672 bytes (acumulado: 1516056)
-[2026-06-24 02:11:16] Leídos 76744 bytes (acumulado: 1592800)
-[2026-06-24 02:11:16] Leídos 41992 bytes (acumulado: 1634792)
-[2026-06-24 02:11:16] Leídos 92672 bytes (acumulado: 1727464)
-[2026-06-24 02:11:16] Leídos 127424 bytes (acumulado: 1854888)
-[2026-06-24 02:11:16] Leídos 198376 bytes (acumulado: 2053264)
-[2026-06-24 02:11:16] Leídos 14480 bytes (acumulado: 2067744)
-[2026-06-24 02:11:16] Leídos 33304 bytes (acumulado: 2101048)
-[2026-06-24 02:11:16] Leídos 92672 bytes (acumulado: 2193720)
-[2026-06-24 02:11:16] Leídos 139008 bytes (acumulado: 2332728)
-[2026-06-24 02:11:16] Leídos 92672 bytes (acumulado: 2425400)
-[2026-06-24 02:11:16] Leídos 76744 bytes (acumulado: 2502144)
-[2026-06-24 02:11:16] Leídos 83984 bytes (acumulado: 2586128)
-[2026-06-24 02:11:16] Leídos 181000 bytes (acumulado: 2767128)
-[2026-06-24 02:11:16] Leídos 2896 bytes (acumulado: 2770024)
-[2026-06-24 02:11:16] ERROR leyendo del socket: Connection reset by peer
-[2026-06-24 02:11:16] Solo se recibieron 2770024 bytes de 3145734 esperados
+[2026-06-25 01:02:41] Tamaño de buffer: 3145728
+[2026-06-25 01:02:41] Esperando conexion
+[2026-06-25 01:02:44] Conexion establecida
+[2026-06-25 01:02:44] Recibiendo cantidad de bytes del mensaje a leer
+[2026-06-25 01:02:44] Cantidad de bytes del mensaje: 3145729
+[2026-06-25 01:02:44] Confirmando recepcion al proceso cliente
+[2026-06-25 01:02:44] Iniciando 15 segundos de delay
+[2026-06-25 01:02:59] Leyendo mensaje en Buffer
+[2026-06-25 01:02:59] Leídos 90904 bytes (acumulado: 90904)
+[2026-06-25 01:02:59] Leídos 13032 bytes (acumulado: 103936)
+[2026-06-25 01:02:59] Leídos 1448 bytes (acumulado: 105384)
+[2026-06-25 01:02:59] Leídos 108920 bytes (acumulado: 214304)
+[2026-06-25 01:02:59] Leídos 666080 bytes (acumulado: 880384)
+[2026-06-25 01:02:59] Leídos 141904 bytes (acumulado: 1022288)
+[2026-06-25 01:02:59] Leídos 249056 bytes (acumulado: 1271344)
+[2026-06-25 01:02:59] Leídos 505352 bytes (acumulado: 1776696)
+[2026-06-25 01:02:59] Leídos 15928 bytes (acumulado: 1792624)
+[2026-06-25 01:02:59] Leídos 270776 bytes (acumulado: 2063400)
+[2026-06-25 01:02:59] Leídos 10136 bytes (acumulado: 2073536)
+[2026-06-25 01:02:59] ERROR leyendo del socket: Connection reset by peer
+[2026-06-25 01:02:59] Solo se recibieron 2073536 bytes de 3145729 esperados

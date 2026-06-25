@@ -1,11 +1,11 @@
 tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
 listening on enp0s8, link-type EN10MB (Ethernet), snapshot length 262144 bytes
-02:11:47.385105 IP 192.168.1.74.34062 > 192.168.1.45.5005: Flags [S], seq 324361679, win 64240, options [mss 1460,sackOK,TS val 223703398 ecr 0,nop,wscale 6], length 0
-02:11:47.385127 IP 192.168.1.45.5005 > 192.168.1.74.34062: Flags [S.], seq 4211611695, ack 324361680, win 65160, options [mss 1460,sackOK,TS val 1988662722 ecr 223703398,nop,wscale 6], length 0
-02:11:47.385234 IP 192.168.1.74.34062 > 192.168.1.45.5005: Flags [.], ack 1, win 1004, options [nop,nop,TS val 223703398 ecr 1988662722], length 0
-02:11:47.385338 IP 192.168.1.74.34062 > 192.168.1.45.5005: Flags [P.], seq 1:15, ack 1, win 1004, options [nop,nop,TS val 223703398 ecr 1988662722], length 14
-02:11:47.385346 IP 192.168.1.45.5005 > 192.168.1.74.34062: Flags [.], ack 15, win 1018, options [nop,nop,TS val 1988662722 ecr 223703398], length 0
-02:11:47.385581 IP 192.168.1.74.34062 > 192.168.1.45.5005: Flags [R.], seq 15, ack 1, win 1004, options [nop,nop,TS val 223703398 ecr 1988662722], length 0
+01:03:30.160326 IP 192.168.1.74.41526 > 192.168.1.45.5005: Flags [S], seq 2998360900, win 64240, options [mss 1460,sackOK,TS val 735658800 ecr 0,nop,wscale 6], length 0
+01:03:30.160349 IP 192.168.1.45.5005 > 192.168.1.74.41526: Flags [S.], seq 1410720194, ack 2998360901, win 65160, options [mss 1460,sackOK,TS val 2131160824 ecr 735658800,nop,wscale 6], length 0
+01:03:30.160438 IP 192.168.1.74.41526 > 192.168.1.45.5005: Flags [.], ack 1, win 1004, options [nop,nop,TS val 735658800 ecr 2131160824], length 0
+01:03:30.160473 IP 192.168.1.74.41526 > 192.168.1.45.5005: Flags [P.], seq 1:15, ack 1, win 1004, options [nop,nop,TS val 735658800 ecr 2131160824], length 14
+01:03:30.160477 IP 192.168.1.45.5005 > 192.168.1.74.41526: Flags [.], ack 15, win 1018, options [nop,nop,TS val 2131160824 ecr 735658800], length 0
+01:03:30.160597 IP 192.168.1.74.41526 > 192.168.1.45.5005: Flags [R.], seq 15, ack 1, win 1004, options [nop,nop,TS val 735658800 ecr 2131160824], length 0
 
 6 packets captured
 6 packets received by filter
