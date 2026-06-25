@@ -110,7 +110,9 @@ int main(int argc, char *argv[])
     // GENERA MENSAJE PARA ENVIO
     memset((buffer), 'a', buf_size);
 
-     int cant_bytes = strlen(buffer);
+   // fix para evitar que strlen lea fuera del array
+    buffer[buf_size - 1] = '\0';
+    int cant_bytes = buf_size;
 
     snprintf(log_line, sizeof(log_line), "Enviado cantidad de bytes del mensaje al proceso servidor (%d)", cant_bytes);
     logmsg(log_line);

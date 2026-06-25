@@ -1,7 +1,7 @@
-[2026-06-25 01:04:33] Tamaño de buffer: 9216
-[2026-06-25 01:04:33] Buffer de envio del kernel: 4608 bytes
-[2026-06-25 01:04:33] Enviado cantidad de bytes del mensaje al proceso servidor (9222)
-[2026-06-25 01:04:33] Esperando respuesta del proceso servidor
-[2026-06-25 01:04:33] Enviando mensaje al proceso servidor
-[2026-06-25 01:04:33] Bytes enviados al kernel: 9222
-[2026-06-25 01:04:33] Fin de transmisión
+[2026-06-25 01:16:28] Tamaño de buffer: 9216
+[2026-06-25 01:16:28] Buffer de envio del kernel: 4608 bytes
+[2026-06-25 01:16:28] Enviado cantidad de bytes del mensaje al proceso servidor (9216)
+[2026-06-25 01:16:28] Esperando respuesta del proceso servidor
+[2026-06-25 01:16:28] Enviando mensaje al proceso servidor
+[2026-06-25 01:16:28] Bytes enviados al kernel: 9215
+[2026-06-25 01:16:28] Fin de transmisión
