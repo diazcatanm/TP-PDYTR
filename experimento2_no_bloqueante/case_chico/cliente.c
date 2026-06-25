@@ -134,7 +134,7 @@ int main(int argc, char *argv[])
     
     // ENVIA MENSAJE AL SOCKET
     logmsg("Enviando mensaje al proceso servidor");
-    n = write(sockfd, buffer, strlen(buffer));
+    n = write(sockfd, buffer, cant_bytes);
     if (n < 0)
         error("ERROR writing message to socket");
     bzero(buffer, buf_size);
