@@ -1,5 +1,5 @@
-[2026-06-25 01:15:25] Tamaño de buffer: 10
-[2026-06-25 01:15:25] Enviado cantidad de bytes del mensaje al proceso servidor (14)
-[2026-06-25 01:15:25] Enviando mensaje al proceso servidor
-[2026-06-25 01:15:25] Bytes enviados al kernel: 14
-[2026-06-25 01:15:25] Fin de transmisión
+[2026-06-27 23:11:18] Tamaño de buffer: 10
+[2026-06-27 23:11:18] Enviado cantidad de bytes del mensaje al proceso servidor (14)
+[2026-06-27 23:11:18] Enviando mensaje al proceso servidor
+[2026-06-27 23:11:18] Bytes enviados al kernel: 14
+[2026-06-27 23:11:18] Fin de transmisión

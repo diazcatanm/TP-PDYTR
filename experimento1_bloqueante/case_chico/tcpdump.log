@@ -1,13 +1,12 @@
 tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
 listening on enp0s8, link-type EN10MB (Ethernet), snapshot length 262144 bytes
-01:15:25.524294 IP 192.168.1.74.59918 > 192.168.1.45.5005: Flags [S], seq 2704971904, win 64240, options [mss 1460,sackOK,TS val 736374163 ecr 0,nop,wscale 6], length 0
-01:15:25.524321 IP 192.168.1.45.5005 > 192.168.1.74.59918: Flags [S.], seq 635482441, ack 2704971905, win 65160, options [mss 1460,sackOK,TS val 2131876188 ecr 736374163,nop,wscale 6], length 0
-01:15:25.524500 IP 192.168.1.74.59918 > 192.168.1.45.5005: Flags [.], ack 1, win 1004, options [nop,nop,TS val 736374164 ecr 2131876188], length 0
-01:15:25.524602 IP 192.168.1.74.59918 > 192.168.1.45.5005: Flags [P.], seq 1:15, ack 1, win 1004, options [nop,nop,TS val 736374164 ecr 2131876188], length 14
-01:15:25.524612 IP 192.168.1.45.5005 > 192.168.1.74.59918: Flags [.], ack 15, win 1018, options [nop,nop,TS val 2131876188 ecr 736374164], length 0
-01:15:25.524644 IP 192.168.1.74.59918 > 192.168.1.45.5005: Flags [R.], seq 15, ack 1, win 1004, options [nop,nop,TS val 736374164 ecr 2131876188], length 0
-01:15:25.524675 IP 192.168.1.74.59918 > 192.168.1.45.5005: Flags [R], seq 2704971919, win 0, length 0
+23:11:18.654943 IP 192.168.1.44.50290 > 192.168.1.45.5005: Flags [S], seq 818053830, win 64240, options [mss 1460,sackOK,TS val 3848432446 ecr 0,nop,wscale 6], length 0
+23:11:18.654965 IP 192.168.1.45.5005 > 192.168.1.44.50290: Flags [S.], seq 1415739663, ack 818053831, win 65160, options [mss 1460,sackOK,TS val 1371001205 ecr 3848432446,nop,wscale 6], length 0
+23:11:18.655042 IP 192.168.1.44.50290 > 192.168.1.45.5005: Flags [.], ack 1, win 1004, options [nop,nop,TS val 3848432446 ecr 1371001205], length 0
+23:11:18.655125 IP 192.168.1.44.50290 > 192.168.1.45.5005: Flags [P.], seq 1:15, ack 1, win 1004, options [nop,nop,TS val 3848432446 ecr 1371001205], length 14
+23:11:18.655133 IP 192.168.1.45.5005 > 192.168.1.44.50290: Flags [.], ack 15, win 1018, options [nop,nop,TS val 1371001205 ecr 3848432446], length 0
+23:11:18.655197 IP 192.168.1.44.50290 > 192.168.1.45.5005: Flags [R.], seq 15, ack 1, win 1004, options [nop,nop,TS val 3848432446 ecr 1371001205], length 0
 
-7 packets captured
-7 packets received by filter
+6 packets captured
+6 packets received by filter
 0 packets dropped by kernel

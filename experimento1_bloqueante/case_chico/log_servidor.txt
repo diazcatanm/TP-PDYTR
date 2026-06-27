@@ -1,7 +1,7 @@
-[2026-06-25 01:15:22] Tamaño de buffer: 10
-[2026-06-25 01:15:22] Esperando conexion
-[2026-06-25 01:15:25] Conexion establecida
-[2026-06-25 01:15:25] Iniciando 5 segundos de delay
-[2026-06-25 01:15:35] Leyendo mensaje en Buffer
-[2026-06-25 01:15:35] Conexión cerrada por el cliente. Solo se recibieron 0 bytes de 0 esperados
-[2026-06-25 01:15:35] Fin de la recepcion
+[2026-06-27 23:11:15] Tamaño de buffer: 10
+[2026-06-27 23:11:15] Esperando conexion
+[2026-06-27 23:11:18] Conexion establecida
+[2026-06-27 23:11:18] Iniciando 5 segundos de delay
+[2026-06-27 23:11:28] Leyendo mensaje en Buffer
+[2026-06-27 23:11:28] Conexión cerrada por el cliente. Solo se recibieron 0 bytes de 0 esperados
+[2026-06-27 23:11:28] Fin de la recepcion

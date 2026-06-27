@@ -1,7 +1,7 @@
-[2026-06-25 01:14:39] Tamaño de buffer: 3145728
-[2026-06-25 01:14:39] Enviado cantidad de bytes del mensaje al proceso servidor (3145734)
-[2026-06-25 01:14:39] Esperando respuesta del proceso servidor
-[2026-06-25 01:14:39] Comunicacion bloqueante seteada
-[2026-06-25 01:14:39] Enviando mensaje al proceso servidor
-[2026-06-25 01:14:54] Bytes enviados al kernel: 3145734
-[2026-06-25 01:14:54] Fin de transmisión
+[2026-06-27 23:10:32] Tamaño de buffer: 3145728
+[2026-06-27 23:10:32] Enviado cantidad de bytes del mensaje al proceso servidor (3145734)
+[2026-06-27 23:10:32] Esperando respuesta del proceso servidor
+[2026-06-27 23:10:32] Comunicacion bloqueante seteada
+[2026-06-27 23:10:32] Enviando mensaje al proceso servidor
+[2026-06-27 23:10:47] Bytes enviados al kernel: 3145734
+[2026-06-27 23:10:47] Fin de transmisión
