@@ -98,19 +98,27 @@ int main(int argc, char *argv[])
 
     bzero(buffer, buf_size);
 
+    // log tamaño buffer envio kernel
+    int sndbuf_actual;
+    socklen_t optlen_snd = sizeof(sndbuf_actual);
+    getsockopt(sockfd, SOL_SOCKET, SO_SNDBUF, &sndbuf_actual, &optlen_snd);
+    snprintf(log_line, sizeof(log_line), "Buffer de envio del kernel: %d bytes", sndbuf_actual);
+    logmsg(log_line);
+
     //**********************************************//
 
     // GENERA MENSAJE
     memset((buffer), 'a', buf_size);
 
-    int cant_bytes = strlen(buffer);
+    buffer[buf_size - 1] = '\0';
+    int cant_bytes = buf_size;
 
     snprintf(log_line, sizeof(log_line), "Enviado cantidad de bytes del mensaje al proceso servidor (%d)", cant_bytes);
     logmsg(log_line);
     
     // ENVIA UN MENSAJE AL SOCKET
     logmsg("Enviando mensaje al proceso servidor");
-    n = write(sockfd, buffer, strlen(buffer));
+    n = write(sockfd, buffer, cant_bytes);
     if (n < 0)
         error("ERROR writing message to socket");
     bzero(buffer, buf_size);
