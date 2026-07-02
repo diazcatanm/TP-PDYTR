@@ -3,17 +3,17 @@
 PORT=5005
 REPO_DIR="/vagrant_shared"
 CASES=(
-    "experimento1_bloqueante/case_grande"
-    "experimento1_bloqueante/case_chico"
-    "experimento2_no_bloqueante/case_grande"
-    "experimento2_no_bloqueante/case_chico"
+    "experimento1_bloqueante/caso_grande"
+    "experimento1_bloqueante/caso_chico"
+    "experimento2_no_bloqueante/caso_grande"
+    "experimento2_no_bloqueante/caso_chico"
 )
 
 declare -A BUFFERS
-BUFFERS["experimento1_bloqueante/case_grande"]=3145728
-BUFFERS["experimento1_bloqueante/case_chico"]=10
-BUFFERS["experimento2_no_bloqueante/case_grande"]=3145728
-BUFFERS["experimento2_no_bloqueante/case_chico"]=9216
+BUFFERS["experimento1_bloqueante/caso_grande"]=3145728
+BUFFERS["experimento1_bloqueante/caso_chico"]=10
+BUFFERS["experimento2_no_bloqueante/caso_grande"]=3145728
+BUFFERS["experimento2_no_bloqueante/caso_chico"]=9216
 
 logmsg() {
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1"

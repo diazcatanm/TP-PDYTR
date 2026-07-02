@@ -92,13 +92,26 @@ int main(int argc, char *argv[])
   
   logmsg("Conexion establecida");
 
+  // LEE CANT DE BYTES QUE RECIBIRA
+  logmsg("Recibiendo cantidad de bytes del mensaje a leer");
   int cant_bytes;
+  n = read(newsockfd, &cant_bytes, sizeof(int));
+  snprintf(log_line, sizeof(log_line), "Cantidad de bytes del mensaje: %d", cant_bytes);
+  logmsg(log_line);
+
+  bzero(buffer, buf_size);
+
+  // RESPONDE AL CLIENTE
+  logmsg("Confirmando recepcion al proceso cliente");
+  n = write(newsockfd, "ok", 2);
+  bzero(buffer, buf_size);
 
   logmsg("Iniciando 5 segundos de delay");
-  sleep(10); 
+  sleep(5); 
 
   // LEE EL MENSAJE DEL CLIENTE
   logmsg("Leyendo mensaje en Buffer");
+
 
   int total_read = 0;
   char logbuffer[128];

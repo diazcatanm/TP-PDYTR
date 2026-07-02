@@ -60,6 +60,7 @@ int main(int argc, char *argv[])
     char buffer[buf_size];
     char message[2];
 
+
     char log_line[128];
     snprintf(log_line, sizeof(log_line), "Tamaño de buffer: %d", buf_size);
     logmsg(log_line);
@@ -115,6 +116,18 @@ int main(int argc, char *argv[])
 
     snprintf(log_line, sizeof(log_line), "Enviado cantidad de bytes del mensaje al proceso servidor (%d)", cant_bytes);
     logmsg(log_line);
+
+     // ENVIA CANTIDAD DE BYTES DEL MENSAJE AL SOCKET
+    n = write(sockfd, &cant_bytes, sizeof(cant_bytes));
+    if (n < 0)
+        error("ERROR writing cant bytes message to socket");
+
+    // ESPERA RECIBIR UNA RESPUESTA
+    logmsg("Esperando respuesta del proceso servidor");
+    n = read(sockfd, message, 2);
+
+    if (n < 0)
+        error("ERROR reading from socket");
     
     // ENVIA UN MENSAJE AL SOCKET
     logmsg("Enviando mensaje al proceso servidor");
