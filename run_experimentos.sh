@@ -57,12 +57,11 @@ for CASE in "${CASES[@]}"; do
     vagrant ssh vm1 -c "sudo pkill tcpdump" || true
     sleep 1
 
-    logmsg "=== LOG SERVIDOR ($CASE) ==="
-    vagrant ssh vm1 -c "cat $REPO_DIR/$CASE/log_servidor.txt" || true
-    logmsg "=== LOG CLIENTE ($CASE) ==="
-    vagrant ssh vm2 -c "cat $REPO_DIR/$CASE/log_cliente.txt" || true
-    logmsg "=== TCPDUMP ($CASE) ==="
-    vagrant ssh vm1 -c "cat $REPO_DIR/$CASE/tcpdump.log" || true
+    logmsg "Caso finalizado: $CASE"
+    logmsg "Logs disponibles en: $CASE/"
+    logmsg "  - log_servidor.txt"
+    logmsg "  - log_cliente.txt"
+    logmsg "  - tcpdump.log"
 done
 
 logmsg "Experimento finalizado. Logs disponibles en cada carpeta."
